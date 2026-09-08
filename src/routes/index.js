@@ -27,11 +27,21 @@ router.use('/messages', messageRoutes);
 router.use('/payment', paymentRoutes);
 router.use('/upload', uploadRoutes);
 
+import mongoose from 'mongoose';
+
 // Health check route
 router.get('/health', (req, res) => {
+  const state = mongoose.connection.readyState;
+  const states = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
   res.status(200).json({
     success: true,
     message: 'BOO Automotive API is operational',
+    database: {
+      status: states[state] || 'unknown',
+      readyState: state,
+      host: mongoose.connection.host || null,
+      name: mongoose.connection.name || null
+    },
     timestamp: new Date().toISOString()
   });
 });

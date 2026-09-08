@@ -18,42 +18,55 @@ export const getSpareParts = async (req, res, next) => {
       limit = 20
     } = req.query;
 
-    const query = {};
+    const andConditions = [];
 
     // For public website show only active parts unless admin
     if (!req.admin) {
-      query.isActive = true;
+      andConditions.push({ isActive: true });
     }
 
     if (category && category !== 'all') {
-      query.$or = [{ categorySlug: category }];
-      // If valid ObjectId, also check category ID
-      if (category.match(/^[0-9a-fA-F]{24}$/)) {
-        query.$or.push({ category });
+      const catOrConditions = [
+        { categorySlug: category },
+        { categorySlug: new RegExp(`^${category}`, 'i') }
+      ];
+      if (category.toLowerCase().includes('brake') || category === 'فرامل') {
+        catOrConditions.push({ categorySlug: 'brake' }, { categorySlug: 'brakes' });
       }
+      if (category.match(/^[0-9a-fA-F]{24}$/)) {
+        catOrConditions.push({ category });
+      }
+      andConditions.push({ $or: catOrConditions });
     }
 
     if (brand && brand !== 'All') {
-      query.brand = { $regex: brand, $options: 'i' };
+      andConditions.push({ brand: { $regex: brand, $options: 'i' } });
     }
 
     if (inStock === 'true') {
-      query.stock = { $gt: 0 };
+      andConditions.push({ stock: { $gt: 0 } });
     }
 
     if (lowStock === 'true') {
-      query.$expr = { $lte: ['$stock', '$minimumStock'] };
+      andConditions.push({ $expr: { $lte: ['$stock', '$minimumStock'] } });
     }
 
-    if (search) {
-      query.$or = [
-        { name: { $regex: search, $options: 'i' } },
-        { sku: { $regex: search, $options: 'i' } },
-        { brand: { $regex: search, $options: 'i' } },
-        { model: { $regex: search, $options: 'i' } },
-        { compatibility: { $in: [new RegExp(search, 'i')] } }
-      ];
+    if (search && search.trim()) {
+      const s = search.trim();
+      andConditions.push({
+        $or: [
+          { name: { $regex: s, $options: 'i' } },
+          { sku: { $regex: s, $options: 'i' } },
+          { brand: { $regex: s, $options: 'i' } },
+          { model: { $regex: s, $options: 'i' } },
+          { shortDescription: { $regex: s, $options: 'i' } },
+          { description: { $regex: s, $options: 'i' } },
+          { compatibility: { $in: [new RegExp(s, 'i')] } }
+        ]
+      });
     }
+
+    const query = andConditions.length > 0 ? { $and: andConditions } : {};
 
     let sortOption = { createdAt: -1 };
     if (sort === 'price-low') sortOption = { price: 1 };

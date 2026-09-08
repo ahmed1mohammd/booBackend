@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
 export const connectDB = async () => {
-  const primaryUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/boo_automotive';
+  let primaryUri = (process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/boo_automotive').trim();
+  // Remove wrapping quotes if entered by mistake
+  primaryUri = primaryUri.replace(/^["']|["']$/g, '').trim();
   const fallbackUri = 'mongodb://127.0.0.1:27017/boo_automotive';
 
   try {

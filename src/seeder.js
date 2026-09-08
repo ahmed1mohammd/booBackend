@@ -781,7 +781,7 @@ const seedDatabase = async () => {
         minimumStock: item.minimumStock,
         shortDescription: item.shortDescription,
         description: item.description,
-        images: [],
+        images: item.images || [],
         compatibility: item.compatibility,
         specs: item.specs,
         isActive: item.isActive,

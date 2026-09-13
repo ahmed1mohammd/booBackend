@@ -21,9 +21,9 @@ export const getAccessories = async (req, res, next) => {
 
     const andConditions = [];
 
-    // Public: show only active accessories
+    // Admin: see all accessories; Public: only active ones
     if (!req.admin) {
-      andConditions.push({ isActive: true });
+      andConditions.push({ isActive: { $ne: false } });
     }
 
     if (category && category !== 'all') {

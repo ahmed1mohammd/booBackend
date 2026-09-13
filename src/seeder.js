@@ -25,7 +25,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 5,
     shortDescription: "طقم بطانات فرامل أمامية OEM خالي من الأسبستوس، يمنح كبحاً دقيقاً مع تقليل الغبار والصفير.",
     description: "طقم تيل فرامل أمامي ألماني الصنع معتمد من Textar لموديلات بي إم دابليو الفئة الثالثة والرابعة، يضمن أداء كبح عالي الثبات تحت درجات الحرارة المرتفعة مع عمر افتراضي طويل وحماية الطنابير.",
-    images: [{ url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788835020/boo-automotive/parts/ghxuvpf6lfopqbjwykkf.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31, F35: 320i, 328i, 330i)",
       "BMW 4 Series (F32, F36: 420i, 428i, 430i)",
@@ -52,7 +52,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 4,
     shortDescription: "طقم بطانات فرامل خلفية متوازنة لقوة الكبح وثبات مؤخرة السيارة وعمر تشغيلي طويل.",
     description: "طقم تيل فرامل خلفي أصلي من Brembo مصمم لتوفير توازن مثالي لمنظومة الفرامل ومنع انحراف السيارة أثناء التوقف المفاجئ.",
-    images: [{ url: "https://images.unsplash.com/photo-1600793575654-910699b5e4d4?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834973/boo-automotive/parts/z06hjpyfrgijwl83zfuh.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31: 320i, 328i)",
       "BMW 4 Series (F32, F36: 420i, 428i)",
@@ -78,7 +78,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "زوج أقراص فرامل مهواة مع طبقة Coat Z المقاومة للصدأ والتآكل الناتج عن الحرارة الشديدة.",
     description: "أقراص فرامل أمامية مهواة ألمانية أصلية من Zimmermann مغطاة بتقنية Coat Z المقاومة للصدأ، تمنع الاعوجاج والاهتزازات عند الفرملة على السرعات العالية.",
-    images: [{ url: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834937/boo-automotive/parts/nsnl9xx0vo1jconkmv6v.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30 320i, 328i, 330i)",
       "BMW 4 Series (F32, F36 420i, 428i, 430i)"
@@ -104,7 +104,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "زوج طنابير فرامل خلفية أصلية مطلية ضد الصدأ مع فتحات تبريد دقيقة.",
     description: "طنابير فرامل خلفية مطابقة لمواصفات بي إم دابليو الأصلية، مصنعة من سبيكة حديد الزهر عالي الكربون لمنع التآكل غير المتساوي.",
-    images: [{ url: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834895/boo-automotive/parts/ab85fzvidbnrwxl3yi20.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F35: 320i, 328i)",
       "BMW 4 Series (F32, F36: 420i, 428i)"
@@ -129,7 +129,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 8,
     shortDescription: "كابل حساس حراري لإرسال إشعار تحذيري على لوحة العدادات بمجرد وصول بطانة التيل للحد الأدنى.",
     description: "حساس تيل فرامل أمامي إلكتروني معتمد من Bowa مصنع من خامات مقاومة للحرارة العالية والزيوت، يعطي قراءة دقيقة على شاشة الـ iDrive.",
-    images: [{ url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834856/boo-automotive/parts/szqgnwknckuibskri3fd.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31, F34 GT)",
       "BMW 4 Series (F32, F33, F36 Gran Coupe)"
@@ -807,61 +807,66 @@ const seedDatabase = async () => {
 
     console.log(`[Seeder] Seeded 25 BMW Spare Parts: ${insertedCount} inserted, ${updatedCount} updated (Stock = 30 for all).`);
 
-    // Ensure Sample Accessories exist
-    const accessoryCount = await Accessory.countDocuments();
-    if (accessoryCount === 0) {
-      await Accessory.create([
-        {
-          name: 'BMW M Performance Carbon Fiber Mirror Caps',
-          sku: 'ACC-BMW-001',
-          category: catMap['accessories'] || undefined,
-          categorySlug: 'accessories',
-          brand: 'M Performance',
-          price: 4500,
-          stock: 15,
-          minimumStock: 3,
-          shortDescription: 'أغطية مرايات كاربون فايبر أصلية لطرازات بي إم دابليو الفئة الثالثة والرابعة.',
-          description: 'أغطية مرايات مصنوعة من ألياف الكربون الأصلية المقاومة للحرارة والأشعة فوق البنفسجية، تمنح سيارتك مظهراً رياضياً فائق الأناقة مع سهولة التركيب وتوافق تام.',
-          compatibility: ['BMW 3 Series (G20, G21)', 'BMW 4 Series (G22, G23, G26)', 'BMW 2 Series (G42)'],
-          images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=80', isMain: true }],
-          isActive: true,
-          featured: true
-        },
-        {
-          name: 'Dynamic LED Side Mirror Indicators (إشارات مرايات ديناميكية)',
-          sku: 'ACC-BMW-002',
-          category: catMap['accessories'] || undefined,
-          categorySlug: 'accessories',
-          brand: 'Osram / OEM Style',
-          price: 2200,
-          stock: 20,
-          minimumStock: 4,
-          shortDescription: 'إشارات مرايات LED متسلسلة بتأثير دخاني أنيق وسهولة تركيب Plug & Play.',
-          description: 'إشارات مرايات ديناميكية متتابعة عالية الوضوح تعمل بنظام التوصيل المباشر بدون الحاجة لبرمجة أو تعديل في الأسلاك، مقاومة للماء والغبار.',
-          compatibility: ['BMW 3 Series (F30, F31)', 'BMW 4 Series (F32, F36)', 'BMW 1 Series (F20)'],
-          images: [{ url: 'https://images.unsplash.com/photo-1600793575654-910699b5e4d4?w=800&auto=format&fit=crop&q=80', isMain: true }],
-          isActive: true,
-          featured: true
-        },
-        {
-          name: 'All-Weather Premium Rubber Floor Mats (طقم دواسات مطاطية فاخرة)',
-          sku: 'ACC-BMW-003',
-          category: catMap['accessories'] || undefined,
-          categorySlug: 'accessories',
-          brand: 'BMW Genuine Accessories',
-          price: 3800,
-          stock: 12,
-          minimumStock: 3,
-          shortDescription: 'طقم دواسات أرضية أصلية مقاومة للماء والأوساخ لكافة الفصول.',
-          description: 'طقم دواسات أرضية أصلية مصمم بدقة ثلاثية الأبعاد ليناسب أرضية سيارتك تماماً، مع حواف مرتفعة لحماية الفرش الداخلي من السوائل والأتربة وسهولة تامة في التنظيف.',
-          compatibility: ['BMW 3 Series (G20)', 'BMW 4 Series Gran Coupe (G26)'],
-          images: [{ url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=80', isMain: true }],
-          isActive: true,
-          featured: true
-        }
-      ]);
-      console.log('[Seeder] Seeded Accessories');
+    // Ensure Accessories exist and have Cloudinary images
+    const sampleAccessories = [
+      {
+        name: 'BMW M Performance Carbon Fiber Mirror Caps',
+        sku: 'ACC-BMW-001',
+        category: catMap['accessories'] || undefined,
+        categorySlug: 'accessories',
+        brand: 'M Performance',
+        price: 4500,
+        stock: 15,
+        minimumStock: 3,
+        shortDescription: 'أغطية مرايات كاربون فايبر أصلية لطرازات بي إم دابليو الفئة الثالثة والرابعة.',
+        description: 'أغطية مرايات مصنوعة من ألياف الكربون الأصلية المقاومة للحرارة والأشعة فوق البنفسجية، تمنح سيارتك مظهراً رياضياً فائق الأناقة مع سهولة التركيب وتوافق تام.',
+        compatibility: ['BMW 3 Series (G20, G21)', 'BMW 4 Series (G22, G23, G26)', 'BMW 2 Series (G42)'],
+        images: [{ url: 'https://res.cloudinary.com/dkiecibqs/image/upload/v1788834108/boo-automotive/parts/f27fwcux8gc6yh088ejy.jpg', isMain: true }],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: 'Dynamic LED Side Mirror Indicators (إشارات مرايات ديناميكية)',
+        sku: 'ACC-BMW-002',
+        category: catMap['accessories'] || undefined,
+        categorySlug: 'accessories',
+        brand: 'Osram / OEM Style',
+        price: 2200,
+        stock: 20,
+        minimumStock: 4,
+        shortDescription: 'إشارات مرايات LED متسلسلة بتأثير دخاني أنيق وسهولة تركيب Plug & Play.',
+        description: 'إشارات مرايات ديناميكية متتابعة عالية الوضوح تعمل بنظام التوصيل المباشر بدون الحاجة لبرمجة أو تعديل في الأسلاك، مقاومة للماء والغبار.',
+        compatibility: ['BMW 3 Series (F30, F31)', 'BMW 4 Series (F32, F36)', 'BMW 1 Series (F20)'],
+        images: [{ url: 'https://res.cloudinary.com/dkiecibqs/image/upload/v1788834199/boo-automotive/parts/ez1jjyalbqeu8qq858cf.jpg', isMain: true }],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: 'All-Weather Premium Rubber Floor Mats (طقم دواسات مطاطية فاخرة)',
+        sku: 'ACC-BMW-003',
+        category: catMap['accessories'] || undefined,
+        categorySlug: 'accessories',
+        brand: 'BMW Genuine Accessories',
+        price: 3800,
+        stock: 12,
+        minimumStock: 3,
+        shortDescription: 'طقم دواسات أرضية أصلية مقاومة للماء والأوساخ لكافة الفصول.',
+        description: 'طقم دواسات أرضية أصلية مصمم بدقة ثلاثية الأبعاد ليناسب أرضية سيارتك تماماً، مع حواف مرتفعة لحماية الفرش الداخلي من السوائل والأتربة وسهولة تامة في التنظيف.',
+        compatibility: ['BMW 3 Series (G20)', 'BMW 4 Series Gran Coupe (G26)'],
+        images: [{ url: 'https://res.cloudinary.com/dkiecibqs/image/upload/v1788834252/boo-automotive/parts/yetvvrvofddg55qv0eln.jpg', isMain: true }],
+        isActive: true,
+        featured: true
+      }
+    ];
+
+    for (const accData of sampleAccessories) {
+      await Accessory.findOneAndUpdate(
+        { sku: accData.sku },
+        accData,
+        { upsert: true, new: true }
+      );
     }
+    console.log('[Seeder] Seeded & updated Accessories with Cloudinary images');
 
     // Ensure Services exist
     const serviceCount = await MaintenanceService.countDocuments();

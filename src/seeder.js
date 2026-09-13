@@ -807,66 +807,8 @@ const seedDatabase = async () => {
 
     console.log(`[Seeder] Seeded 25 BMW Spare Parts: ${insertedCount} inserted, ${updatedCount} updated (Stock = 30 for all).`);
 
-    // Ensure Accessories exist and have Cloudinary images
-    const sampleAccessories = [
-      {
-        name: 'BMW M Performance Carbon Fiber Mirror Caps',
-        sku: 'ACC-BMW-001',
-        category: catMap['accessories'] || undefined,
-        categorySlug: 'accessories',
-        brand: 'M Performance',
-        price: 4500,
-        stock: 15,
-        minimumStock: 3,
-        shortDescription: 'أغطية مرايات كاربون فايبر أصلية لطرازات بي إم دابليو الفئة الثالثة والرابعة.',
-        description: 'أغطية مرايات مصنوعة من ألياف الكربون الأصلية المقاومة للحرارة والأشعة فوق البنفسجية، تمنح سيارتك مظهراً رياضياً فائق الأناقة مع سهولة التركيب وتوافق تام.',
-        compatibility: ['BMW 3 Series (G20, G21)', 'BMW 4 Series (G22, G23, G26)', 'BMW 2 Series (G42)'],
-        images: [{ url: 'https://res.cloudinary.com/dkiecibqs/image/upload/v1788834108/boo-automotive/parts/f27fwcux8gc6yh088ejy.jpg', isMain: true }],
-        isActive: true,
-        featured: true
-      },
-      {
-        name: 'Dynamic LED Side Mirror Indicators (إشارات مرايات ديناميكية)',
-        sku: 'ACC-BMW-002',
-        category: catMap['accessories'] || undefined,
-        categorySlug: 'accessories',
-        brand: 'Osram / OEM Style',
-        price: 2200,
-        stock: 20,
-        minimumStock: 4,
-        shortDescription: 'إشارات مرايات LED متسلسلة بتأثير دخاني أنيق وسهولة تركيب Plug & Play.',
-        description: 'إشارات مرايات ديناميكية متتابعة عالية الوضوح تعمل بنظام التوصيل المباشر بدون الحاجة لبرمجة أو تعديل في الأسلاك، مقاومة للماء والغبار.',
-        compatibility: ['BMW 3 Series (F30, F31)', 'BMW 4 Series (F32, F36)', 'BMW 1 Series (F20)'],
-        images: [{ url: 'https://res.cloudinary.com/dkiecibqs/image/upload/v1788834199/boo-automotive/parts/ez1jjyalbqeu8qq858cf.jpg', isMain: true }],
-        isActive: true,
-        featured: true
-      },
-      {
-        name: 'All-Weather Premium Rubber Floor Mats (طقم دواسات مطاطية فاخرة)',
-        sku: 'ACC-BMW-003',
-        category: catMap['accessories'] || undefined,
-        categorySlug: 'accessories',
-        brand: 'BMW Genuine Accessories',
-        price: 3800,
-        stock: 12,
-        minimumStock: 3,
-        shortDescription: 'طقم دواسات أرضية أصلية مقاومة للماء والأوساخ لكافة الفصول.',
-        description: 'طقم دواسات أرضية أصلية مصمم بدقة ثلاثية الأبعاد ليناسب أرضية سيارتك تماماً، مع حواف مرتفعة لحماية الفرش الداخلي من السوائل والأتربة وسهولة تامة في التنظيف.',
-        compatibility: ['BMW 3 Series (G20)', 'BMW 4 Series Gran Coupe (G26)'],
-        images: [{ url: 'https://res.cloudinary.com/dkiecibqs/image/upload/v1788834252/boo-automotive/parts/yetvvrvofddg55qv0eln.jpg', isMain: true }],
-        isActive: true,
-        featured: true
-      }
-    ];
-
-    for (const accData of sampleAccessories) {
-      await Accessory.findOneAndUpdate(
-        { sku: accData.sku },
-        accData,
-        { upsert: true, new: true }
-      );
-    }
-    console.log('[Seeder] Seeded & updated Accessories with Cloudinary images');
+    // Accessories module ready for Admin Dashboard entries
+    console.log('[Seeder] Accessories module ready (Admin will add custom accessories via Dashboard).');
 
     // Ensure Services exist
     const serviceCount = await MaintenanceService.countDocuments();

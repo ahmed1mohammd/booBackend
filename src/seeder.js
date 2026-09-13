@@ -807,8 +807,178 @@ const seedDatabase = async () => {
 
     console.log(`[Seeder] Seeded 25 BMW Spare Parts: ${insertedCount} inserted, ${updatedCount} updated (Stock = 30 for all).`);
 
-    // Accessories module ready for Admin Dashboard entries
-    console.log('[Seeder] Accessories module ready (Admin will add custom accessories via Dashboard).');
+    // Seed 10 Official Accessories (BMW M Performance & Mercedes AMG)
+    const initialAccessories = [
+      {
+        name: "BMW M Performance Carbon Fiber Rear Spoiler",
+        sku: "M-PS-RS-G20",
+        brand: "BMW M Performance",
+        price: 35000,
+        stock: 3,
+        minimumStock: 1,
+        compatibility: ["BMW 3 Series G20"],
+        categorySlug: "styling",
+        shortDescription: "إسبويلر خلفي من ألياف الكربون الأصلية لطرازات بي إم دابليو الفئة الثالثة G20.",
+        description: "إسبويلر خلفي أصلي مصنع من ألياف الكربون عالي الجودة لتحسين القوة الضاغطة والمظهر الرياضي.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "BMW M Performance Carbon Fiber Mirror Caps",
+        sku: "M-PS-MC-G20",
+        brand: "BMW M Performance",
+        price: 28000,
+        stock: 4,
+        minimumStock: 1,
+        compatibility: ["BMW 3 Series G20", "M340i"],
+        categorySlug: "styling",
+        shortDescription: "أغطية مرايات كاربون فايبر أصلية لسيارات بي إم دابليو G20 و M340i.",
+        description: "أغطية مرايات مصنوعة من ألياف الكربون خفيفة الوزن والمقاومة للعوامل الجوية.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "BMW M Performance Carbon Fiber Front Splitter",
+        sku: "M-PS-FS-G20",
+        brand: "BMW M Performance",
+        price: 42000,
+        stock: 2,
+        minimumStock: 1,
+        compatibility: ["BMW 3 Series G20"],
+        categorySlug: "styling",
+        shortDescription: "سبليتر أمامي رياضي كاربون فايبر لتحسين ديناميكية ومظهر الفئة الثالثة.",
+        description: "سبليتر صدام أمامي سفلي مصنوع من ألياف الكربون لزيادة الانسيابية وثبات المصد الأمامي.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "BMW M Performance Carbon Fiber Interior Trim",
+        sku: "M-PS-IT-G20",
+        brand: "BMW M Performance",
+        price: 32000,
+        stock: 3,
+        minimumStock: 1,
+        compatibility: ["BMW 3 Series G20"],
+        categorySlug: "interior",
+        shortDescription: "طقم كربون فايبر داخلي فاخر لمقصورة بي إم دابليو الفئة الثالثة.",
+        description: "تطعيمات داخلية كربون فايبر للكونسول والتابلوه لإضفاء لمسة رياضية فائقة الفخامة.",
+        images: [],
+        isActive: true,
+        featured: false
+      },
+      {
+        name: "BMW M Performance Alcantara Steering Wheel",
+        sku: "M-PS-SW-G20",
+        brand: "BMW M Performance",
+        price: 55000,
+        stock: 2,
+        minimumStock: 1,
+        compatibility: ["BMW 3 Series G20", "M340i"],
+        categorySlug: "interior",
+        shortDescription: "عجلة قيادة ألكانتارا رياضية مع تطعيمات الكربون لمظهر وأداء استثنائي.",
+        description: "عجلة قيادة M Performance مغطاة بجلد الألكانتارا الأصلي مع خياطة رياضية متباينة وشريط مركز العلوي.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "Mercedes-AMG Carbon Fiber Rear Spoiler",
+        sku: "AMG-CF-RS-W206",
+        brand: "Mercedes-AMG",
+        price: 45000,
+        stock: 2,
+        minimumStock: 1,
+        compatibility: ["Mercedes C-Class W206", "C43 AMG"],
+        categorySlug: "styling",
+        shortDescription: "سبويلر خلفي أصلي من الكاربون فايبر لسيارات مرسيدس W206 و C43 AMG.",
+        description: "جناح خلفي رياضي كربون فايبر معتمد من AMG لتحسين ديناميكية الهواء على السرعات العالية.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "Mercedes-AMG Carbon Fiber Mirror Caps",
+        sku: "AMG-CF-MC-W206",
+        brand: "Mercedes-AMG",
+        price: 32000,
+        stock: 3,
+        minimumStock: 1,
+        compatibility: ["Mercedes C-Class W206"],
+        categorySlug: "styling",
+        shortDescription: "أغطية مرايات مرسيدس AMG كاربون فايبر أصلية.",
+        description: "أغطية مرايات جانبية من ألياف الكربون الأصلية لسيارات مرسيدس الفئة C الشكل الجديد W206.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "Mercedes-AMG Carbon Fiber Front Splitter",
+        sku: "AMG-CF-FS-W206",
+        brand: "Mercedes-AMG",
+        price: 48000,
+        stock: 2,
+        minimumStock: 1,
+        compatibility: ["Mercedes C-Class W206", "C43 AMG"],
+        categorySlug: "styling",
+        shortDescription: "شفة سبليتر أمامية كاربون فايبر رياضية لسيارات مرسيدس AMG.",
+        description: "مشتت هواء أمامي عالي الأداء مصنع من الكاربون فايبر المقاوم للصدمات.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "Mercedes-AMG Performance Steering Wheel",
+        sku: "AMG-SW-W206",
+        brand: "Mercedes-AMG",
+        price: 65000,
+        stock: 2,
+        minimumStock: 1,
+        compatibility: ["Mercedes C-Class W206", "C43 AMG"],
+        categorySlug: "interior",
+        shortDescription: "عجلة قيادة AMG Performance رياضية فاخرة بمقبض جلد ديناميكا.",
+        description: "طارة قيادة AMG Performance مزودة بأزرار التحكم الفائقة وشاشة تحديد وضعية القيادة القياسية.",
+        images: [],
+        isActive: true,
+        featured: true
+      },
+      {
+        name: "Mercedes-AMG Carbon Fiber Interior Trim Kit",
+        sku: "AMG-CF-IT-W206",
+        brand: "Mercedes-AMG",
+        price: 52000,
+        stock: 2,
+        minimumStock: 1,
+        compatibility: ["Mercedes C-Class W206"],
+        categorySlug: "interior",
+        shortDescription: "طقم فورمايكا وتطعيمات داخلية كربون فايبر أصلي لمقصورة مرسيدس W206.",
+        description: "تطعيمات مقصورة داخلية من الكاربون فايبر عالي الجودة للكونسول والأبواب الداخلية.",
+        images: [],
+        isActive: true,
+        featured: false
+      }
+    ];
+
+    let seededAccCount = 0;
+    for (const accItem of initialAccessories) {
+      const existingAcc = await Accessory.findOne({ sku: accItem.sku });
+      if (existingAcc) {
+        // Retain existing images if uploaded from dashboard
+        const existingImages = existingAcc.images || [];
+        await Accessory.findOneAndUpdate(
+          { sku: accItem.sku },
+          { ...accItem, images: existingImages.length > 0 ? existingImages : accItem.images },
+          { new: true }
+        );
+      } else {
+        await Accessory.create(accItem);
+      }
+      seededAccCount++;
+    }
+
+    console.log(`[Seeder] Successfully seeded ${seededAccCount} official BMW & Mercedes AMG accessories.`);
 
     // Ensure Services exist
     const serviceCount = await MaintenanceService.countDocuments();

@@ -1,6 +1,6 @@
 import express from 'express';
 import authRoutes from './authRoutes.js';
-import carRoutes from './carRoutes.js';
+import accessoryRoutes from './accessoryRoutes.js';
 import categoryRoutes from './categoryRoutes.js';
 import sparePartRoutes from './sparePartRoutes.js';
 import maintenanceRoutes from './maintenanceRoutes.js';
@@ -15,7 +15,7 @@ import uploadRoutes from './uploadRoutes.js';
 const router = express.Router();
 
 router.use('/auth', authRoutes);
-router.use('/cars', carRoutes);
+router.use('/accessories', accessoryRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/products', sparePartRoutes);
 router.use('/services', maintenanceRoutes);
@@ -33,7 +33,7 @@ import { getDbStatus, connectDB } from '../config/db.js';
 router.get('/health', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'BOO Automotive API is operational',
+    message: 'BOO Spare Parts, Accessories & Services API is operational',
     database: getDbStatus(),
     timestamp: new Date().toISOString()
   });

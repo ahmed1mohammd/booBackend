@@ -53,7 +53,7 @@ app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 // Root welcome
 app.get('/', (req, res) => {
   res.json({
-    name: 'BOO Automotive & Spare Parts Backend API',
+    name: 'BOO Spare Parts, Accessories & Services API',
     version: '1.0.0',
     documentation: '/api/health',
     status: 'Running'

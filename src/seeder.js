@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import AdminUser from './models/AdminUser.js';
-import Car from './models/Car.js';
+import Accessory from './models/Accessory.js';
 import Category from './models/Category.js';
 import SparePart from './models/SparePart.js';
 import MaintenanceService from './models/MaintenanceService.js';
@@ -153,7 +153,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 10,
     shortDescription: "خرطوشة فلتر زيت ألمانية متضمنة الجوانات الدائرية وحلقة النحاس لعزل الشوائب الدقيقة.",
     description: "فلتر زيت المحرك الأصلي Mann-Filter HU 816 z المعتمد من BMW. يحافظ على لزوجة الزيت ونقاء دورة التزييت ويحمي عمود الكرنك والسبائك من التآكل.",
-    images: [{ url: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788835020/boo-automotive/parts/ghxuvpf6lfopqbjwykkf.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20/N26)",
       "BMW 5 Series (F10, G30: 520i, 528i)",
@@ -180,7 +180,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 6,
     shortDescription: "فلتر تنقية هواء عالي السعة لحماية غرف الاحتراق وحساس الماف (MAF) من الغبار والرمال.",
     description: "فلتر هواء محرك أصلي Mahle LX 2077 مصنع بألياف سليلوزية دقيقة توفر أقصى معدل تدفق للهواء مع حجز 99.8% من الأتربة الدقيقة لحماية التيربو.",
-    images: [{ url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834973/boo-automotive/parts/z06hjpyfrgijwl83zfuh.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31: 316i, 320i, 328i)",
       "BMW 1 Series (F20, F21: 116i, 118i, 120i)",
@@ -207,7 +207,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 5,
     shortDescription: "فلتر مقصورة متعدد الطبقات مدعّم بالفحم النشط لتنقية الهواء من عوادم الطرق والروائح والأتربة.",
     description: "فلتر تكييف كربوني متقدم من Corteco يزيل الغازات الضارة والروائح الكريهة ويمنع تكون الفطريات داخل ثلاجة التكييف.",
-    images: [{ url: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834937/boo-automotive/parts/nsnl9xx0vo1jconkmv6v.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31, F34 GT)",
       "BMW 4 Series (F32, F33, F36 Gran Coupe)"
@@ -232,7 +232,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 3,
     shortDescription: "وحدة ترشيح بنزين دقيقة لحماية الرشاشات ومضخات الحقن المباشر من الشوائب والماء.",
     description: "فلتر وقود معدني أصلي من Bosch مدمج به صمام منظم للضغط لتثبيت ضغط البنزين الواصل لطلمبة الحقن المباشر ومنع انسداد الرشاشات.",
-    images: [{ url: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834895/boo-automotive/parts/ab85fzvidbnrwxl3yi20.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (E90, F30: 320i, 325i, 330i)",
       "BMW 5 Series (E60, F10: 520i, 523i, 528i)",
@@ -258,7 +258,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 8,
     shortDescription: "طقم 4 شمعات إشعال ليزر إيريديوم لضمان الاحتراق الأمثل وتوفير الوقود ومنع التقطيع.",
     description: "شمعات الإشعال الأصلية NGK SILZKBR8D8S المعتمدة لمحركات BMW تيربو. تتميز بسن إيريديوم ليزر دقيق 0.6 مم يضمن شرارة قوية تحت أقصى ضغط شحن تيربو.",
-    images: [{ url: "https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834856/boo-automotive/parts/szqgnwknckuibskri3fd.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20 Engine)",
       "BMW 5 Series (F10: 520i, 528i)",
@@ -286,7 +286,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 6,
     shortDescription: "ملف إشعال إلكتروني عالي الكفاءة يرفع الجهد لآلاف الفولتات لتوليد شرارة كافية ومستقرة.",
     description: "موبينة إشعال أصلية من Delphi Technologies مصممة لتحمل درجات حرارة المحرك العالية ومنع الميس فاير (Misfire) وتأمين عزم تسارع ناعم.",
-    images: [{ url: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834817/boo-automotive/parts/x2hgzoif3abw9bcgpxyj.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, G20: 320i, 330i)",
       "BMW 5 Series (F10, G30: 520i, 530i)",
@@ -314,7 +314,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "طرمبة تبريد كهربائية متغيرة السرعة متصلة مباشرة بوحدة التحكم الإلكترونية (DME).",
     description: "مضخة مياه كهربائية ألمانية أصلية من Pierburg تعمل بدون سير وتحت تحكم كامل من كمبيوتر المحرك لضبط درجة الحرارة المثالية وحماية رأس المحرك.",
-    images: [{ url: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834771/boo-automotive/parts/ndyzhjorijoor6ryz0bd.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20/N26 Engine)",
       "BMW 5 Series (F10: 520i, 528i)",
@@ -342,7 +342,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 3,
     shortDescription: "صمام حراري إلكتروني بالكوعة والفيشة لتسريع الإحماء والتحكم الدقيق في تدفق مياه التبريد.",
     description: "كوعة ثرموستات مياه كاملة بحساس الحرارة والفيشة الإلكترونية من Mahle Behr. تضمن وصول المحرك لحرارة التشغيل الطبيعية 95°C في أسرع وقت وتمنع سخونة المحرك.",
-    images: [{ url: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834734/boo-automotive/parts/ravwykl63tydswyacoqq.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20)",
       "BMW 5 Series (F10: 520i, 528i)",
@@ -369,7 +369,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 4,
     shortDescription: "خزان تمدد بلاستيكي مقوى يتحمل الضغط والحرارة العالية مع حساس مستوى سائل التبريد.",
     description: "قربة مياه ردياتير أصلية Meyle HD مصنعة من بوليمر معالج حرارياً ومزودة بحساس منسوب المياه وغطاء أصلي مصمم لتفريغ الضغط الزائد بأمان.",
-    images: [{ url: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788743641/boo-automotive/parts/odb1agqedt3vophn1glm.jpg", isMain: true }],
     compatibility: [
       "BMW 1 Series (F20, F21: 116i, 118i, 120i)",
       "BMW 2 Series (F22, F23)",
@@ -396,7 +396,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "مبادل حراري ألومنيوم فائق التوصيل لخفض حرارة المياه بكفاءة في الأجواء الحارة.",
     description: "ردياتير ألومنيوم أصلي من Nissens الدنماركية، ملحوم بدقة لزيادة كفاءة التبادل الحراري بنسبة 15% وتحمل ضغوط دورة التبريد في درجات حرارة الصيف المصرية.",
-    images: [{ url: "https://images.unsplash.com/photo-1589148938909-4d241c91ee52?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834680/boo-automotive/parts/ksw8y2b5edznwctleisw.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31: 316i, 320i, 328i, 330i)",
       "BMW 4 Series (F32, F36: 420i, 428i, 430i)"
@@ -421,7 +421,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "زوج ممتصات صدمات أمامية هيدروليكية غازية لتأمين ثبات السيارة وامتصاص اهتزازات الطرق.",
     description: "طقم مساعدين أماميين أصليين Sachs Super Touring مطابقين لمواصفات بي إم دابليو الهندسية. يوفران راحة فائقة في القيادة وثباتاً استثنائياً في المناورات والمنعطفات.",
-    images: [{ url: "https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834632/boo-automotive/parts/lapladiu781fjhpqzcvi.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30 Sedan: 316i, 320i, 328i, 330i)",
       "BMW 4 Series (F32 Coupe: 420i, 428i, 430i)"
@@ -446,7 +446,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "زوج ممتصات صدمات خلفية غازية لتحقيق استقرار مؤخرة السيارة وتقليل تمايل الهيكل.",
     description: "مساعدين خلفيين أصليين من Sachs يضمنان تماسك العجلات الخلفية مع الطريق أثناء السرعات العالية وتقليل إجهاد الشاسيه على الطرق غير الممهدة.",
-    images: [{ url: "https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834589/boo-automotive/parts/ptkrno4edeegpw38uemb.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31, F35: 320i, 328i)",
       "BMW 4 Series (F32, F36: 420i, 428i)"
@@ -471,7 +471,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "زوج مقصات سفلية مزودة بجلب هيدروليكية وبيض توجيه لضبط زوايا العفشة وتفادي الرعشة.",
     description: "مقصات أمامية سفلية أصلية مصنعة من ألومنيوم مطروق عالي المتانة من Lemförder مزودة بجلب زيتية ممتصة للاهتزازات، تعيد دقة التوجيه وزوايا العجلات لوضع المصنع.",
-    images: [{ url: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834542/boo-automotive/parts/fnvdattrrqvonlnm59sm.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30, F31: 320i, 328i, 330i)",
       "BMW 4 Series (F32, F36: 420i, 428i, 430i)"
@@ -496,7 +496,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 4,
     shortDescription: "وصلات توازن مفصلية تربط المساعد بعمود الاتزان لمنع انقلاب الهيكل والميلان في الملفات.",
     description: "طقم تياش ميزان أمامي ألماني أصلي من Febi Bilstein بمفاصل كروية محكمة الإغلاق ومقاومة للأتربة، يمنع أصوات الطقطقة ويزيد من ثبات السيارة في المنحنيات.",
-    images: [{ url: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834497/boo-automotive/parts/mqlt94fllkflsmsfxkzi.jpg", isMain: true }],
     compatibility: [
       "BMW 1 Series (F20, F21)",
       "BMW 2 Series (F22, F23)",
@@ -523,7 +523,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "قواعد محرك زيتية تعمل على تثبيت كتلة المحرك وعزل الاهتزازات تماماً عن المقصورة.",
     description: "طقم قواعد محرك هيدروليكية أصلية من Corteco ممتلئة بزيت خاص لامتصاص ارتعاشات المحرك في وضع السلانسيه ومنع وصول أي اهتزازات لعجلة القيادة.",
-    images: [{ url: "https://images.unsplash.com/photo-1508974239320-0a029497e820?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834449/boo-automotive/parts/ihzk4uwwbkkxkkfbfi5o.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20 Engine)",
       "BMW 4 Series (F32: 420i, 428i)"
@@ -548,7 +548,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 3,
     shortDescription: "كارتيرة فتيس أوتوماتيك أصلية مدمج بها فلتر داخلي ومغناطيس تجميع الرايش مع جوان وطبة.",
     description: "طقم كارتيرة فتيس أصلي من مصنع ZF الألماني الخاص بناقل الحركة 8 سرعات ZF 8HP. متضمنة الفلتر الداخلي المدمج، الجوان الأصلي، طقم المسامير، وطبة الملء.",
-    images: [{ url: "https://images.unsplash.com/photo-1563720223523-491ff04651de?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834404/boo-automotive/parts/zliv74fe2zvmi3ms2m62.jpg", isMain: true }],
     compatibility: [
       "All BMW Models with ZF 8HP Transmission:",
       "BMW 3 Series (F30, G20: 320i, 328i, 330i)",
@@ -577,7 +577,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 2,
     shortDescription: "وحدة ضخ وقود غاطسة بالتانك كاملة بالعوامة وفلتر الشفط لضمان تدفق بنزين بضغط ثابت.",
     description: "طرمبة بنزين غطاس أصلية من Continental VDO الألمانية، توفر ضغط وقود ثابت 5.5 بار إلى طلمبة الضغط العالي وتتضمن عوامة مستوى البنزين الدقيقة.",
-    images: [{ url: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834346/boo-automotive/parts/szcd7rvyesfwfenjn5i9.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 316i, 320i, 328i, 335i)",
       "BMW 1 Series (F20, F21)",
@@ -603,7 +603,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 5,
     shortDescription: "سير مجموعة أصلي متعدد الممرات مقاوم للحرارة والتشقق لنقل الحركة إلى الدينامو وطرمبة التكييف.",
     description: "سير دينامو ومجموعة أصلي Continental ContiTech 6PK1000 مصنع من مطاط EPDM المقوى بألياف الأراميد لمنع الصفير والتمدد تحت الأحمال الثقيلة.",
-    images: [{ url: "https://images.unsplash.com/photo-1508974239320-0a029497e820?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834252/boo-automotive/parts/yetvvrvofddg55qv0eln.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20)",
       "BMW 5 Series (F10: 520i, 528i)",
@@ -629,7 +629,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 3,
     shortDescription: "شداد أوتوماتيكي لسير المجموعة مع بكرة التوجيه للحفاظ على شد مثالي وتفادي انقطاع السير.",
     description: "شداد سير مجموعة ألماني أصلي من INA Schaeffler مزود بسوستة هيدروليكية تعوض التمدد اللحظي وتمنع اهتزاز السير وتلف الدينامو أو كمبروسر التكييف.",
-    images: [{ url: "https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834199/boo-automotive/parts/ez1jjyalbqeu8qq858cf.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30 320i, 328i N20)",
       "BMW 5 Series (F10 520i, 528i)",
@@ -655,7 +655,7 @@ export const BMW_25_SPARE_PARTS = [
     minimumStock: 4,
     shortDescription: "طقم جوانات غطاء الصمامات والتاكيهات لمنع تسريب الزيت إلى البوجيهات والعادم.",
     description: "طقم جوان غطاء تاكيهات ألماني أصلي من Elring Das Original مصنع من مطاط الفايتون (Viton) الحراري، يحل مشكلة تسريب زيت المحرك الشائعة فوق فرن الشكمان وحول البوجيهات.",
-    images: [{ url: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800&auto=format&fit=crop&q=80", isMain: true }],
+    images: [{ url: "https://res.cloudinary.com/dkiecibqs/image/upload/v1788834108/boo-automotive/parts/f27fwcux8gc6yh088ejy.jpg", isMain: true }],
     compatibility: [
       "BMW 3 Series (F30: 320i, 328i N20/N26 Engine)",
       "BMW 5 Series (F10: 520i, 528i)",
@@ -743,13 +743,14 @@ const seedDatabase = async () => {
       console.log('[Seeder] Seeded Hero Slides');
     }
 
-    // Upsert Spare Part Categories
+    // Upsert Spare Part & Accessory Categories
     const defaultCategories = [
       { name: 'Brake Parts', slug: 'brake', icon: 'Disc', order: 1, isActive: true },
       { name: 'Filters', slug: 'filters', icon: 'Filter', order: 2, isActive: true },
       { name: 'Engine Parts', slug: 'engine', icon: 'Cpu', order: 3, isActive: true },
       { name: 'Electrical', slug: 'electrical', icon: 'Zap', order: 4, isActive: true },
-      { name: 'Suspension', slug: 'suspension', icon: 'Sliders', order: 5, isActive: true }
+      { name: 'Suspension', slug: 'suspension', icon: 'Sliders', order: 5, isActive: true },
+      { name: 'Car Accessories', slug: 'accessories', icon: 'Package', order: 6, isActive: true }
     ];
 
     const catMap = {};
@@ -806,46 +807,60 @@ const seedDatabase = async () => {
 
     console.log(`[Seeder] Seeded 25 BMW Spare Parts: ${insertedCount} inserted, ${updatedCount} updated (Stock = 30 for all).`);
 
-    // Ensure Vehicles exist
-    const carCount = await Car.countDocuments();
-    if (carCount === 0) {
-      await Car.create([
+    // Ensure Sample Accessories exist
+    const accessoryCount = await Accessory.countDocuments();
+    if (accessoryCount === 0) {
+      await Accessory.create([
         {
-          brand: 'Mercedes-Benz',
-          model: 'C-Class C200 AMG Line',
-          year: 2024,
-          mileage: 'Zero km',
-          price: 3850000,
-          bodyType: 'Sedan',
-          fuel: 'Mild Hybrid',
-          transmission: 'Automatic 9G-Tronic',
-          engine: '1.5L Turbo 204 HP',
-          description: 'Brand new Mercedes-Benz C200 AMG Line with full digital cockpit and AMG styling package.',
-          status: 'Available',
-          featured: true,
-          tags: ['Import Ready', 'Brand New', 'Full Option'],
-          images: [{ url: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80', isMain: true }],
-          specs: [{ key: 'Horsepower', value: '204 HP' }]
+          name: 'BMW M Performance Carbon Fiber Mirror Caps',
+          sku: 'ACC-BMW-001',
+          category: catMap['accessories'] || undefined,
+          categorySlug: 'accessories',
+          brand: 'M Performance',
+          price: 4500,
+          stock: 15,
+          minimumStock: 3,
+          shortDescription: 'أغطية مرايات كاربون فايبر أصلية لطرازات بي إم دابليو الفئة الثالثة والرابعة.',
+          description: 'أغطية مرايات مصنوعة من ألياف الكربون الأصلية المقاومة للحرارة والأشعة فوق البنفسجية، تمنح سيارتك مظهراً رياضياً فائق الأناقة مع سهولة التركيب وتوافق تام.',
+          compatibility: ['BMW 3 Series (G20, G21)', 'BMW 4 Series (G22, G23, G26)', 'BMW 2 Series (G42)'],
+          images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=80', isMain: true }],
+          isActive: true,
+          featured: true
         },
         {
-          brand: 'BMW',
-          model: '420i Gran Coupé M Sport',
-          year: 2023,
-          mileage: '14,500 km',
-          price: 3450000,
-          bodyType: 'Coupé',
-          fuel: 'Petrol',
-          transmission: 'Steptronic 8-Speed',
-          engine: '2.0L TwinPower 184 HP',
-          description: 'Certified pre-owned BMW 420i Gran Coupe M Sport with full dealer service history.',
-          status: 'Available',
-          featured: true,
-          tags: ['Certified Pre-Owned', 'M Sport Package'],
-          images: [{ url: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80', isMain: true }],
-          specs: [{ key: 'Horsepower', value: '184 HP' }]
+          name: 'Dynamic LED Side Mirror Indicators (إشارات مرايات ديناميكية)',
+          sku: 'ACC-BMW-002',
+          category: catMap['accessories'] || undefined,
+          categorySlug: 'accessories',
+          brand: 'Osram / OEM Style',
+          price: 2200,
+          stock: 20,
+          minimumStock: 4,
+          shortDescription: 'إشارات مرايات LED متسلسلة بتأثير دخاني أنيق وسهولة تركيب Plug & Play.',
+          description: 'إشارات مرايات ديناميكية متتابعة عالية الوضوح تعمل بنظام التوصيل المباشر بدون الحاجة لبرمجة أو تعديل في الأسلاك، مقاومة للماء والغبار.',
+          compatibility: ['BMW 3 Series (F30, F31)', 'BMW 4 Series (F32, F36)', 'BMW 1 Series (F20)'],
+          images: [{ url: 'https://images.unsplash.com/photo-1600793575654-910699b5e4d4?w=800&auto=format&fit=crop&q=80', isMain: true }],
+          isActive: true,
+          featured: true
+        },
+        {
+          name: 'All-Weather Premium Rubber Floor Mats (طقم دواسات مطاطية فاخرة)',
+          sku: 'ACC-BMW-003',
+          category: catMap['accessories'] || undefined,
+          categorySlug: 'accessories',
+          brand: 'BMW Genuine Accessories',
+          price: 3800,
+          stock: 12,
+          minimumStock: 3,
+          shortDescription: 'طقم دواسات أرضية أصلية مقاومة للماء والأوساخ لكافة الفصول.',
+          description: 'طقم دواسات أرضية أصلية مصمم بدقة ثلاثية الأبعاد ليناسب أرضية سيارتك تماماً، مع حواف مرتفعة لحماية الفرش الداخلي من السوائل والأتربة وسهولة تامة في التنظيف.',
+          compatibility: ['BMW 3 Series (G20)', 'BMW 4 Series Gran Coupe (G26)'],
+          images: [{ url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=80', isMain: true }],
+          isActive: true,
+          featured: true
         }
       ]);
-      console.log('[Seeder] Seeded Vehicles');
+      console.log('[Seeder] Seeded Accessories');
     }
 
     // Ensure Services exist

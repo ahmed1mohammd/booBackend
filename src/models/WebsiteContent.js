@@ -13,7 +13,7 @@ const websiteContentSchema = new mongoose.Schema(
       heading: { type: String, default: 'Your Trusted Automotive Partner' },
       description: {
         type: String,
-        default: 'BOO provides integrated automotive solutions including car import, vehicle sales, spare parts and professional maintenance.'
+        default: 'BOO provides integrated automotive solutions including genuine spare parts, premium accessories, and certified maintenance.'
       },
       secondaryText: {
         type: String,
@@ -76,7 +76,7 @@ const websiteContentSchema = new mongoose.Schema(
       heading: { type: String, default: 'Looking for the Right Automotive Solution?' },
       description: {
         type: String,
-        default: 'Whether you need a car, spare parts or professional maintenance, BOO is ready to help.'
+        default: 'Whether you need genuine spare parts, car accessories, or professional maintenance, BOO is ready to help.'
       },
       primaryButtonText: { type: String, default: 'Contact Us' },
       primaryButtonLink: { type: String, default: '/contact' },

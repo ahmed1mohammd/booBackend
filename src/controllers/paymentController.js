@@ -39,32 +39,37 @@ export const verifyPaymentStatus = async (req, res, next) => {
 // @access  Public (Called by Fawaterk server)
 export const handleFawaterkWebhook = async (req, res, next) => {
   try {
-    const { invoice_id, invoice_status, order_id } = req.body;
-    console.log('[Fawaterk Webhook]:', req.body);
+    const { invoice_id, invoice_status, status, transaction_status, order_id, merchant_reference } = req.body;
+    console.log('[Fawaterk Webhook Payload]:', req.body);
 
-    const query = order_id ? { orderNumber: order_id } : { fawaterkInvoiceId: invoice_id };
+    const targetOrderNumber = order_id || merchant_reference;
+    const query = targetOrderNumber ? { orderNumber: targetOrderNumber } : { fawaterkInvoiceId: invoice_id };
     const order = await Order.findOne(query);
 
     if (!order) {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
 
-    if (invoice_status === 'paid' || invoice_status === 'PAID') {
+    const rawStatus = (invoice_status || status || transaction_status || '').toString().toLowerCase();
+
+    if (rawStatus === 'paid' || rawStatus === 'success') {
       order.paymentStatus = 'paid';
-      order.timeline[1].completed = true;
-      order.timeline[1].time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      if (order.timeline && order.timeline[1]) {
+        order.timeline[1].completed = true;
+        order.timeline[1].time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
       await order.save();
 
       // Deduct stock atomically
       await deductOrderStock(order._id);
-    } else if (invoice_status === 'failed' || invoice_status === 'FAILED') {
+    } else if (['failed', 'fail', 'canceled', 'cancel', 'expired'].includes(rawStatus)) {
       order.paymentStatus = 'failed';
       await order.save();
     }
 
-    return res.status(200).json({ success: true, message: 'Webhook processed' });
+    return res.status(200).json({ success: true, message: 'Webhook processed successfully' });
   } catch (error) {
-    console.error('[Webhook Error]:', error);
+    console.error('[Webhook Processing Error]:', error);
     return res.status(500).json({ success: false, error: error.message });
   }
 };

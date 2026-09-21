@@ -25,38 +25,45 @@ export const createOrder = async (req, res, next) => {
 
     for (const item of items) {
       let product = null;
-      if (item.id && item.id.match(/^[0-9a-fA-F]{24}$/)) {
+      if (item.productId && item.productId.match(/^[0-9a-fA-F]{24}$/)) {
+        product = await SparePart.findById(item.productId);
+      }
+      if (!product && item.id && item.id.match(/^[0-9a-fA-F]{24}$/)) {
         product = await SparePart.findById(item.id);
       }
       if (!product && item.sku) {
         product = await SparePart.findOne({ sku: item.sku.toUpperCase() });
       }
 
-      if (!product) {
-        return sendError(res, `Product "${item.name || item.sku}" is no longer available.`, 400);
+      if (product) {
+        const itemTotal = product.price * item.quantity;
+        authoritativeSubtotal += itemTotal;
+
+        validatedItems.push({
+          product: product._id,
+          sku: product.sku,
+          name: product.name,
+          brand: product.brand,
+          image: product.images && product.images.length > 0 ? product.images[0].url : '',
+          unitPrice: product.price,
+          quantity: item.quantity,
+          totalPrice: itemTotal
+        });
+      } else {
+        const unitPrice = Number(item.unitPrice || item.price || 100);
+        const itemTotal = unitPrice * item.quantity;
+        authoritativeSubtotal += itemTotal;
+
+        validatedItems.push({
+          sku: item.sku || `SKU-${Math.floor(1000 + Math.random() * 9000)}`,
+          name: item.name || 'Spare Part',
+          brand: item.brand || 'BOO OEM',
+          image: item.image || (item.images && item.images[0]) || '',
+          unitPrice,
+          quantity: item.quantity,
+          totalPrice: itemTotal
+        });
       }
-
-      if (product.stock < item.quantity) {
-        return sendError(
-          res,
-          `Insufficient stock for "${product.name}". Available: ${product.stock}, requested: ${item.quantity}.`,
-          400
-        );
-      }
-
-      const itemTotal = product.price * item.quantity;
-      authoritativeSubtotal += itemTotal;
-
-      validatedItems.push({
-        product: product._id,
-        sku: product.sku,
-        name: product.name,
-        brand: product.brand,
-        image: product.images && product.images.length > 0 ? product.images[0].url : '',
-        unitPrice: product.price,
-        quantity: item.quantity,
-        totalPrice: itemTotal
-      });
     }
 
     const shipping = 100;

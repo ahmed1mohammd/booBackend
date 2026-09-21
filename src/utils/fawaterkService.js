@@ -62,6 +62,21 @@ export const initiateFawaterkPaymentSession = async (order) => {
 
     if (accessToken) {
       // Fawaterk API v3 CreateTransaction
+      const itemsList = (order.items || []).map((it) => ({
+        name: it.name || 'Spare Part',
+        price: Number(it.unitPrice || 0).toFixed(2),
+        quantity: String(it.quantity || 1)
+      }));
+
+      const shippingCost = Number(order.pricing?.shipping || 0);
+      if (shippingCost > 0) {
+        itemsList.push({
+          name: 'مصاريف الشحن والتوصيل (Shipping)',
+          price: shippingCost.toFixed(2),
+          quantity: '1'
+        });
+      }
+
       const payload = {
         cartTotal: (order.pricing?.total || 0).toFixed(2),
         currency: 'EGP',
@@ -80,11 +95,7 @@ export const initiateFawaterkPaymentSession = async (order) => {
           pendingUrl: `${returnUrl}?order_id=${order.orderNumber}&status=pending`,
           webhookUrl
         },
-        cartItems: (order.items || []).map((it) => ({
-          name: it.name || 'Spare Part',
-          price: (it.unitPrice || 0).toFixed(2),
-          quantity: String(it.quantity || 1)
-        }))
+        cartItems: itemsList
       };
 
       const response = await axios.post(`${baseUrl}/api/v3/createTransaction`, payload, {

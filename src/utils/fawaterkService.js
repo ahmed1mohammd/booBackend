@@ -166,6 +166,48 @@ export const initiateFawaterkPaymentSession = async (order) => {
 };
 
 /**
+ * Check authoritative invoice status from Fawaterk API
+ */
+export const checkFawaterkInvoiceStatus = async (invoiceId) => {
+  if (!invoiceId) return null;
+  const apiKey = process.env.FAWATERK_API_KEY;
+  const baseUrl = process.env.FAWATERK_BASE_URL || 'https://app.fawaterk.com';
+
+  if (!apiKey || apiKey === 'your_fawaterk_api_key_here') {
+    return null;
+  }
+
+  try {
+    const res = await axios.get(`${baseUrl}/api/v2/getInvoiceData/${invoiceId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      }
+    });
+
+    if (res.data && res.data.status === 'success' && res.data.data) {
+      const data = res.data.data;
+      const isPaid = data.paid === 1 || data.status_text === 'paid';
+      const isPending = data.status_text === 'pending' || data.status_text === 'unpaid';
+      const isFailed = data.status_text === 'failed' || data.status_text === 'expired' || data.status_text === 'canceled';
+
+      return {
+        paid: isPaid,
+        statusText: data.status_text || (isPaid ? 'paid' : 'unpaid'),
+        totalPaid: data.total_paid,
+        paidAt: data.paid_at,
+        isPending,
+        isFailed,
+        invoiceId: data.id
+      };
+    }
+  } catch (err) {
+    console.error('[Fawaterk Inquiry Error]:', err.response?.data || err.message);
+  }
+  return null;
+};
+
+/**
  * Deduct product stock after verified payment
  * Enforces atomic stock deduction and avoids duplicate deductions
  */

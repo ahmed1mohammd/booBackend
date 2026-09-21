@@ -11,7 +11,8 @@ let tokenExpiresAt = 0;
 async function getFawaterkAccessToken() {
   const clientId = process.env.FAWATERK_CLIENT_ID;
   const clientSecret = process.env.FAWATERK_CLIENT_SECRET;
-  const tokenUrl = process.env.FAWATERK_TOKEN_URL || 'https://staging.fawaterk.com/oauth/token';
+  const baseUrl = process.env.FAWATERK_BASE_URL || 'https://app.fawaterk.com';
+  const tokenUrl = process.env.FAWATERK_TOKEN_URL || `${baseUrl}/oauth/token`;
 
   if (!clientId || !clientSecret) {
     return null;
@@ -52,9 +53,9 @@ async function getFawaterkAccessToken() {
  * Initialize Fawaterk Payment Session (API v3 / v2)
  */
 export const initiateFawaterkPaymentSession = async (order) => {
-  const baseUrl = process.env.FAWATERK_BASE_URL || 'https://staging.fawaterk.com';
-  const returnUrl = process.env.FAWATERK_RETURN_URL || 'http://localhost:3000/payment/success';
-  const failUrl = process.env.FAWATERK_FAIL_URL || 'http://localhost:3000/payment/failed';
+  const baseUrl = process.env.FAWATERK_BASE_URL || 'https://app.fawaterk.com';
+  const returnUrl = process.env.FAWATERK_RETURN_URL || 'https://www.booivesment.com/payment/success';
+  const failUrl = process.env.FAWATERK_FAIL_URL || 'https://www.booivesment.com/payment/failed';
   const webhookUrl = process.env.FAWATERK_WEBHOOK_URL || 'https://boobackend-production.up.railway.app/api/payment/webhook';
 
   try {

@@ -59,25 +59,64 @@ export const initiateFawaterkPaymentSession = async (order) => {
   const webhookUrl = process.env.FAWATERK_WEBHOOK_URL || 'https://boobackend-production.up.railway.app/api/payment/webhook';
 
   try {
-    const accessToken = await getFawaterkAccessToken();
+    const itemsList = (order.items || []).map((it) => ({
+      name: it.name || 'Spare Part',
+      price: Number(it.unitPrice || 0).toFixed(2),
+      quantity: String(it.quantity || 1)
+    }));
 
-    if (accessToken) {
-      // Fawaterk API v3 CreateTransaction
-      const itemsList = (order.items || []).map((it) => ({
-        name: it.name || 'Spare Part',
-        price: Number(it.unitPrice || 0).toFixed(2),
-        quantity: String(it.quantity || 1)
-      }));
+    const shippingCost = Number(order.pricing?.shipping || 0);
+    if (shippingCost > 0) {
+      itemsList.push({
+        name: 'مصاريف الشحن والتوصيل (Shipping)',
+        price: shippingCost.toFixed(2),
+        quantity: '1'
+      });
+    }
 
-      const shippingCost = Number(order.pricing?.shipping || 0);
-      if (shippingCost > 0) {
-        itemsList.push({
-          name: 'مصاريف الشحن والتوصيل (Shipping)',
-          price: shippingCost.toFixed(2),
-          quantity: '1'
-        });
+    // 1. Try Live Production HASH API Key / Vendor Key if present
+    const apiKey = process.env.FAWATERK_API_KEY;
+    if (apiKey && apiKey !== 'your_fawaterk_api_key_here') {
+      const v2Payload = {
+        cartTotal: (order.pricing?.total || 0).toFixed(2),
+        currency: 'EGP',
+        customer: {
+          first_name: order.customer?.name?.split(' ')[0] || 'Customer',
+          last_name: order.customer?.name?.split(' ').slice(1).join(' ') || 'BOO',
+          email: order.customer?.email || 'customer@booautomotive.com',
+          phone: order.customer?.phone || '01000000000',
+          address: order.shippingAddress
+            ? `${order.shippingAddress.address}, ${order.shippingAddress.city}`
+            : 'Egypt'
+        },
+        redirectionUrls: {
+          successUrl: `${returnUrl}?order_id=${order.orderNumber}`,
+          failUrl: `${failUrl}?order_id=${order.orderNumber}`,
+          pendingUrl: `${returnUrl}?order_id=${order.orderNumber}&status=pending`,
+          webhookUrl
+        },
+        cartItems: itemsList
+      };
+
+      const v2Response = await axios.post(`${baseUrl}/api/v2/createInvoiceLink`, v2Payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`
+        }
+      });
+
+      if (v2Response.data && v2Response.data.status === 'success') {
+        return {
+          success: true,
+          invoiceId: v2Response.data.data.invoiceId || v2Response.data.data.invoice_id,
+          paymentUrl: v2Response.data.data.url
+        };
       }
+    }
 
+    // 2. Try OAuth Client Credentials API v3
+    const accessToken = await getFawaterkAccessToken();
+    if (accessToken) {
       const payload = {
         cartTotal: (order.pricing?.total || 0).toFixed(2),
         currency: 'EGP',
@@ -111,47 +150,6 @@ export const initiateFawaterkPaymentSession = async (order) => {
           success: true,
           invoiceId: response.data.data.intent_key || `FAW_${Date.now()}`,
           paymentUrl: response.data.data.url
-        };
-      }
-    }
-
-    // Fallback to API v2 if API Key is configured
-    const apiKey = process.env.FAWATERK_API_KEY;
-    if (apiKey && apiKey !== 'your_fawaterk_api_key_here') {
-      const v2Payload = {
-        cartTotal: order.pricing?.total,
-        currency: 'EGP',
-        customer: {
-          first_name: order.customer?.name?.split(' ')[0] || 'Customer',
-          last_name: order.customer?.name?.split(' ').slice(1).join(' ') || 'BOO',
-          email: order.customer?.email || 'customer@booautomotive.com',
-          phone: order.customer?.phone,
-          address: `${order.shippingAddress?.address}, ${order.shippingAddress?.city}`
-        },
-        redirectionUrls: {
-          successUrl: `${returnUrl}?order_id=${order.orderNumber}`,
-          failUrl: `${failUrl}?order_id=${order.orderNumber}`,
-          pendingUrl: `${returnUrl}?order_id=${order.orderNumber}&status=pending`
-        },
-        cartItems: (order.items || []).map((it) => ({
-          name: it.name,
-          price: it.unitPrice,
-          quantity: it.quantity
-        }))
-      };
-
-      const v2Response = await axios.post(`${baseUrl}/api/v2/createInvoiceLink`, v2Payload, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`
-        }
-      });
-
-      if (v2Response.data && v2Response.data.status === 'success') {
-        return {
-          success: true,
-          invoiceId: v2Response.data.data.invoiceId || v2Response.data.data.invoice_id,
-          paymentUrl: v2Response.data.data.url
         };
       }
     }
